@@ -1,6 +1,5 @@
 export const content = {
   instagramUrl: "https://www.instagram.com/varad.th/",
-  emailUrl: "mailto:varadthokal33@gmail.com",
   nav: [
     { label: "Offer", href: "#offer" },
     { label: "How it works", href: "#process" },
@@ -12,7 +11,7 @@ export const content = {
     title: "Focus on content. We'll handle the ad layer.",
     lead:
       "Your job is to create. Not to learn Ads Manager, ROAS math, or campaign optimization. We bring the right paid audience straight to your door. Our agentic system turns your highest-intent posts into small, tested Meta campaigns — handling targeting, budget pacing, A/B testing, and optimization 24/7. You approve everything before it spends a dollar. Then go back to creating.",
-    cta: "Talk with us — see if your content is a fit",
+    cta: "Talk with us — drop a DM on @varad.th",
     secondaryCta: "How it works",
   },
   proof: ["Real coaching inquiries", "Booked calls", "Paid demand", "No Ads Manager"],
@@ -75,7 +74,7 @@ export const content = {
     kicker: "What happens behind the scenes",
     title: "The Meta ads operating layer, automated.",
     text:
-      "Creator Growth Lab is built by technical operators who understand that creators shouldn't be media buyers. Our agentic system handles the decisions most people pay agencies thousands for — without the agency overhead, meetings, or vague reporting.",
+      "Creator Growth Lab is built by deep AI experts who understand that creators shouldn't be media buyers. Our agentic system handles the decisions most people pay agencies thousands for — without the agency overhead, meetings, or vague reporting.",
     rows: [
       ["scan", "Analyze content for buying signals and engagement quality"],
       ["build", "Turn proven posts into paid Meta campaigns"],
