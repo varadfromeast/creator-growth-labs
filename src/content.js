@@ -1,5 +1,6 @@
 export const content = {
   instagramUrl: "https://www.instagram.com/varad.th/",
+  formspreeEndpoint: "https://formspree.io/f/xojyoooy",
   nav: [
     { label: "Offer", href: "#offer" },
     { label: "How it works", href: "#process" },
@@ -142,6 +143,9 @@ export const content = {
       instagram: "Instagram handle (e.g., @yourhandle)",
     },
     submit: "Send audit request",
+    submitting: "Sending request...",
+    missingEndpoint: "Form setup is almost done. Please DM us directly for now.",
+    error: "Something did not send. Please try again or DM us directly.",
     skip: "Or DM us directly",
   },
 };

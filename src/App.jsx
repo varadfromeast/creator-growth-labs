@@ -339,15 +339,48 @@ function Faq() {
 function LeadForm({ onClose }) {
   const [formData, setFormData] = useState({ name: "", email: "", instagram: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would integrate with your backend/Airtable/Google Sheets
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      onClose();
-    }, 2000);
+    setErrorMessage("");
+
+    if (!content.formspreeEndpoint) {
+      setErrorMessage(content.leadForm.missingEndpoint);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(content.formspreeEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          instagram: formData.instagram,
+          source: "Creator Growth Lab landing page",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Formspree submission failed");
+      }
+
+      setSubmitted(true);
+      setTimeout(() => {
+        onClose();
+      }, 2000);
+    } catch {
+      setErrorMessage(content.leadForm.error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -377,27 +410,38 @@ function LeadForm({ onClose }) {
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
+                name="name"
                 placeholder={content.leadForm.fields.name}
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                disabled={isSubmitting}
                 required
               />
               <input
                 type="email"
+                name="email"
                 placeholder={content.leadForm.fields.email}
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                disabled={isSubmitting}
                 required
               />
               <input
                 type="text"
+                name="instagram"
                 placeholder={content.leadForm.fields.instagram}
                 value={formData.instagram}
                 onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
+                disabled={isSubmitting}
                 required
               />
-              <button type="submit" className="form-submit">
-                {content.leadForm.submit}
+              {errorMessage && (
+                <p className="form-error" role="alert">
+                  {errorMessage}
+                </p>
+              )}
+              <button type="submit" className="form-submit" disabled={isSubmitting}>
+                {isSubmitting ? content.leadForm.submitting : content.leadForm.submit}
               </button>
             </form>
 
