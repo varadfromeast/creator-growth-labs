@@ -14,9 +14,9 @@ import { content } from "./content";
 
 const ease = [0.16, 1, 0.3, 1];
 
-function ExternalCta({ className = "", children = content.hero.cta }) {
+function ExternalCta({ className = "", children = content.hero.cta, href = content.instagramUrl }) {
   return (
-    <a className={`cta-link ${className}`} href={content.instagramUrl} target="_blank" rel="noreferrer">
+    <a className={`cta-link ${className}`} href={href} target="_blank" rel="noreferrer">
       <span>{children}</span>
       <ArrowUpRight aria-hidden="true" size={18} strokeWidth={2.4} />
     </a>
@@ -45,7 +45,7 @@ function Header() {
           ))}
         </nav>
 
-        <ExternalCta className="nav-cta" />
+        <ExternalCta className="nav-cta" href={content.emailUrl} />
       </div>
     </header>
   );
@@ -97,7 +97,7 @@ function Hero() {
             animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45, ease }}
           >
-            <ExternalCta />
+            <ExternalCta href={content.emailUrl} />
             <a className="ghost-link" href="#systems">
               <span>{content.hero.secondaryCta}</span>
               <ArrowRight aria-hidden="true" size={18} strokeWidth={2.4} />
@@ -326,7 +326,7 @@ function FinalCta() {
           <h2 id="cta-title">{content.cta.title}</h2>
           <p>{content.cta.text}</p>
         </div>
-        <ExternalCta />
+        <ExternalCta href={content.emailUrl} />
       </ScrollReveal>
     </section>
   );
