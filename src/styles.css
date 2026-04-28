@@ -1228,6 +1228,15 @@ details p {
   width: 100%;
 }
 
+.cta-panel .cta-wrapper {
+  justify-items: center;
+}
+
+.cta-panel .cta-micro-copy {
+  padding-left: 0;
+  text-align: center;
+}
+
 .site-footer {
   border-top: 1px solid oklch(18% 0.062 326 / 0.14);
   padding: 26px 0 max(34px, env(safe-area-inset-bottom));

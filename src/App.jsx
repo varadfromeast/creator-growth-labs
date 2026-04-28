@@ -33,7 +33,7 @@ function ExternalCta({ className = "", children = content.hero.cta, microCopy, o
   );
 }
 
-function Header() {
+function Header({ onTalk }) {
   return (
     <header className="site-header">
       <a className="skip-link" href="#main">
@@ -55,13 +55,13 @@ function Header() {
           ))}
         </nav>
 
-        <ExternalCta className="nav-cta" />
+        <ExternalCta className="nav-cta" onClick={onTalk} />
       </div>
     </header>
   );
 }
 
-function Hero() {
+function Hero({ onTalk }) {
   const shouldReduceMotion = useReducedMotion();
   const heroWords = content.hero.title.split(" ");
 
@@ -116,7 +116,7 @@ function Hero() {
             animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45, ease }}
           >
-            <ExternalCta microCopy={content.hero.ctaMicroCopy} />
+            <ExternalCta microCopy={content.hero.ctaMicroCopy} onClick={onTalk} />
             <a className="ghost-link" href="#systems">
               <span>{content.hero.secondaryCta}</span>
               <ArrowRight aria-hidden="true" size={18} strokeWidth={2.4} />
@@ -417,9 +417,7 @@ function LeadForm({ onClose }) {
   );
 }
 
-function FinalCta() {
-  const [showForm, setShowForm] = useState(false);
-
+function FinalCta({ onTalk }) {
   return (
     <section className="final-cta shell" id="talk" aria-labelledby="cta-title">
       <ScrollReveal className="cta-panel">
@@ -428,15 +426,8 @@ function FinalCta() {
           <h2 id="cta-title">{content.cta.title}</h2>
           <p>{content.cta.text}</p>
         </div>
-        <ExternalCta microCopy={content.cta.ctaMicroCopy} onClick={(e) => {
-          e.preventDefault();
-          setShowForm(true);
-        }} />
+        <ExternalCta microCopy={content.cta.ctaMicroCopy} onClick={onTalk} />
       </ScrollReveal>
-
-      <AnimatePresence>
-        {showForm && <LeadForm onClose={() => setShowForm(false)} />}
-      </AnimatePresence>
     </section>
   );
 }
@@ -464,8 +455,7 @@ function ScrollProgress() {
   return <motion.div className="scroll-progress" style={{ scaleX }} aria-hidden="true" />;
 }
 
-function StickyMobileCta() {
-  const [showForm, setShowForm] = useState(false);
+function StickyMobileCta({ onTalk }) {
   const [isVisible, setIsVisible] = useState(false);
   const { scrollY } = useScroll();
 
@@ -493,7 +483,7 @@ function StickyMobileCta() {
           >
             <button
               className="cta-link"
-              onClick={() => setShowForm(true)}
+              onClick={onTalk}
             >
               <span>Get free content audit</span>
               <ArrowUpRight aria-hidden="true" size={18} strokeWidth={2.4} />
@@ -502,21 +492,25 @@ function StickyMobileCta() {
         )}
       </AnimatePresence>
 
-      <AnimatePresence>
-        {showForm && <LeadForm onClose={() => setShowForm(false)} />}
-      </AnimatePresence>
     </>
   );
 }
 
 function App() {
+  const [showForm, setShowForm] = useState(false);
+
+  const openForm = (event) => {
+    event?.preventDefault();
+    setShowForm(true);
+  };
+
   return (
     <>
       <ScrollProgress />
-      <StickyMobileCta />
-      <Header />
+      <StickyMobileCta onTalk={openForm} />
+      <Header onTalk={openForm} />
       <main id="main">
-        <Hero />
+        <Hero onTalk={openForm} />
         <Marquee />
         <ChapterMarker>{content.chapters[0].label}</ChapterMarker>
         <ScrollStory chapter={content.chapters[0]} index={0} />
@@ -529,8 +523,11 @@ function App() {
         <Systems />
         <Fit />
         <Faq />
-        <FinalCta />
+        <FinalCta onTalk={openForm} />
       </main>
+      <AnimatePresence>
+        {showForm && <LeadForm onClose={() => setShowForm(false)} />}
+      </AnimatePresence>
       <footer className="site-footer">
         <div className="shell footer-inner">
           <span>Instagram: @varad.th</span>
