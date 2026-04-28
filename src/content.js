@@ -9,7 +9,7 @@ export const content = {
   ],
   hero: {
     eyebrow: "For creators who sell coaching, courses, or services",
-    scarcityBadge: "Testing with a small number of creator-led service businesses",
+    scarcityBadge: "Working with select creators ready to turn proven posts into paid client demand",
     title: "Focus on content. We'll handle the ad layer.",
     lead:
       "Your job is to create. Not to learn Ads Manager, ROAS math, or campaign optimization. We bring the right paid audience straight to your door. Our agentic system turns your highest-intent posts into small, tested Meta campaigns, handling targeting, budget pacing, A/B testing, and optimization 24/7. You approve everything before it spends a dollar. Then go back to creating.",
