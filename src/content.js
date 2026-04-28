@@ -11,8 +11,8 @@ export const content = {
     scarcityBadge: "Testing with a small number of creator-led service businesses",
     title: "Focus on content. We'll handle the ad layer.",
     lead:
-      "Your job is to create. Not to learn Ads Manager, ROAS math, or campaign optimization. We bring the right paid audience straight to your door. Our agentic system turns your highest-intent posts into small, tested Meta campaigns — handling targeting, budget pacing, A/B testing, and optimization 24/7. You approve everything before it spends a dollar. Then go back to creating.",
-    cta: "Talk with us — drop a DM on @varad.th",
+      "Your job is to create. Not to learn Ads Manager, ROAS math, or campaign optimization. We bring the right paid audience straight to your door. Our agentic system turns your highest-intent posts into small, tested Meta campaigns, handling targeting, budget pacing, A/B testing, and optimization 24/7. You approve everything before it spends a dollar. Then go back to creating.",
+    cta: "Talk with us: DM @varad.th",
     ctaMicroCopy: "No Ads Manager knowledge needed",
     secondaryCta: "How it works",
   },
@@ -29,7 +29,7 @@ export const content = {
       label: "The second thing you should know",
       title: "Paid ads find the people organic missed.",
       text:
-        "Organic posts reach who the algorithm decides. Paid ads reach who you decide — specifically, people with the problem you solve, who've never seen your content, and are ready to pay for help. We turn your proven posts into campaigns that find them, without you learning a single Meta ads concept.",
+        "Organic posts reach who the algorithm decides. Paid ads reach who you decide: people with the problem you solve, who've never seen your content, and are ready to pay for help. We turn your proven posts into campaigns that find them, without you learning a single Meta ads concept.",
       chips: ["buyer-intent audiences", "proven creative", "no ad learning curve"],
     },
     {
@@ -49,7 +49,7 @@ export const content = {
       {
         title: "Start with what already works",
         text:
-          "We audit your content for posts with real buying signals — saves, comments, offer questions, repeat engagement — then select the top candidates for testing.",
+          "We audit your content for posts with real buying signals: saves, comments, offer questions, and repeat engagement. Then we select the top candidates for testing.",
       },
       {
         title: "Run a small, controlled test",
@@ -76,7 +76,7 @@ export const content = {
     kicker: "What happens behind the scenes",
     title: "The Meta ads operating layer, automated.",
     text:
-      "Creator Growth Lab is built by deep AI experts who understand that creators shouldn't be media buyers. Our agentic system handles the decisions most people pay agencies thousands for — without the agency overhead, meetings, or vague reporting.",
+      "Creator Growth Lab is built by deep AI experts who understand that creators shouldn't be media buyers. Our agentic system handles the decisions most people pay agencies thousands for, without the agency overhead, meetings, or vague reporting.",
     rows: [
       ["scan", "Analyze content for buying signals and engagement quality"],
       ["build", "Turn proven posts into paid Meta campaigns"],
@@ -115,7 +115,7 @@ export const content = {
     },
     {
       q: "What if I've tried ads before and they didn't work?",
-      a: "Try with us once. We're sure you will see an immediate difference. Most creators launch an ad, panic after three days, and turn it off. Our agentic system handles the hard part — continuous optimization, fatigue detection, and spend reallocation — so your campaigns actually have time to work.",
+      a: "Try with us once. We're sure you will see an immediate difference. Most creators launch an ad, panic after three days, and turn it off. Our agentic system handles the hard part: continuous optimization, fatigue detection, and spend reallocation. Your campaigns actually have time to work.",
     },
     {
       q: "How do I get my information to you after contacting?",
@@ -130,12 +130,12 @@ export const content = {
     kicker: "Ready when your offer is",
     title: "Create content. Serve clients. Let the system handle the ads.",
     text:
-      "Your job is to build trust and deliver your service. Our job is to make sure the right people see it — and that your ad spend turns into qualified conversations, not complexity.",
+      "Your job is to build trust and deliver your service. Our job is to make sure the right people see it, and that your ad spend turns into qualified conversations, not complexity.",
     ctaMicroCopy: "Start with a free content audit",
   },
   leadForm: {
     title: "Get your free content audit",
-    text: "Before we talk strategy, we'll analyze your content for buying signals — saves, comments, repeat engagement. Takes 2 minutes.",
+    text: "Before we talk strategy, we'll analyze your content for buying signals: saves, comments, and repeat engagement. Takes 2 minutes.",
     fields: {
       name: "Your name",
       email: "Email address",

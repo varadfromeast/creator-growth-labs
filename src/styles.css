@@ -142,13 +142,14 @@ button {
   display: flex;
   min-height: 72px;
   align-items: center;
-  justify-content: space-between;
-  gap: 18px;
+  justify-content: flex-start;
+  gap: clamp(14px, 2vw, 26px);
 }
 
 .brand {
   display: inline-grid;
   grid-template-columns: 40px minmax(0, 1fr);
+  flex: 0 0 auto;
   align-items: center;
   gap: 11px;
   color: var(--ink);
@@ -191,11 +192,12 @@ button {
   min-height: 40px;
   align-items: center;
   border-radius: 999px;
-  padding: 0 13px;
+  padding: 0 10px;
   color: var(--ink-2);
   font-size: 0.92rem;
   font-weight: 850;
   text-decoration: none;
+  white-space: nowrap;
   transition:
     background-color 180ms var(--ease-out),
     color 180ms var(--ease-out);
@@ -219,7 +221,9 @@ button {
   background: var(--ink);
   color: var(--paper);
   font-weight: 900;
+  line-height: 1.1;
   text-decoration: none;
+  white-space: nowrap;
   box-shadow: 0 2px 0 oklch(18% 0.062 326 / 0.14);
   transition:
     transform 180ms var(--ease-out),
@@ -383,7 +387,7 @@ p {
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   margin-top: 28px;
 }
 
@@ -395,6 +399,16 @@ p {
   display: grid;
   gap: 8px;
   width: 100%;
+}
+
+.nav .cta-wrapper {
+  width: auto;
+  margin-left: auto;
+}
+
+.nav-cta {
+  min-height: 44px;
+  padding-inline: clamp(14px, 1.8vw, 20px);
 }
 
 .cta-micro-copy {
@@ -424,6 +438,7 @@ p {
 
 .lab {
   position: relative;
+  display: none;
 }
 
 .lab::before {
@@ -474,7 +489,18 @@ p {
 }
 
 .agent-pill {
-  display: none;
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid oklch(18% 0.062 326 / 0.14);
+  border-radius: 999px;
+  padding: 0 10px;
+  background: var(--green);
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 900;
+  white-space: nowrap;
 }
 
 .mode-tabs {
@@ -1418,7 +1444,9 @@ details p {
 @media (min-width: 700px) {
   .hero-actions {
     width: auto;
+    align-items: start;
     flex-direction: row;
+    gap: 12px;
   }
 
   .hero-actions a,
@@ -1510,12 +1538,13 @@ details p {
 @media (min-width: 880px) {
   .nav-links {
     display: flex;
+    flex: 0 1 auto;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
   }
 
   .hero-grid {
-    max-width: 1120px;
+    max-width: 1160px;
   }
 
   .process-board {
@@ -1609,10 +1638,11 @@ details p {
 
   .nav {
     min-height: 66px;
+    gap: 10px;
   }
 
   .brand {
-    grid-template-columns: 36px minmax(0, 120px);
+    grid-template-columns: 36px minmax(0, 104px);
     font-size: 0.94rem;
   }
 
@@ -1623,12 +1653,17 @@ details p {
 
   .nav-cta {
     min-height: 40px;
-    padding-inline: 13px;
+    padding-inline: 16px;
     font-size: 0.9rem;
   }
 
-  .nav-cta svg {
-    display: none;
+  .nav-cta span {
+    font-size: 0;
+  }
+
+  .nav-cta span::after {
+    content: "DM us";
+    font-size: 0.88rem;
   }
 
   .eyebrow {
