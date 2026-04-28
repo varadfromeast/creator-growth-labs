@@ -1,102 +1,196 @@
-# Creator Growth Lab Handoff
+# Creator Growth Lab — Agent Handoff
 
-## Project Location
+## What This Project Is
 
-Local project path:
+Creator Growth Lab is a Vite + React landing page for a **paid-growth Meta ads service** targeting creator-led businesses (coaches, fitness creators, personal brands).
 
-`/Users/varad/Documents/New project 3`
+**Core pitch:** We turn a creator's best-performing content into small, tested Meta ad campaigns. An agentic system handles targeting, budget pacing, A/B testing, and optimization 24/7. The creator approves everything before it goes live, then goes back to creating.
 
-This is a standalone Vite + React landing page for Creator Growth Lab. It is designed to sell a paid-growth Meta ads service for coaches, fitness creators, and personal brands.
+**Register:** Brand (marketing/landing page — design IS the product).
 
-## Current Positioning
+**Current live URL:** https://varadfromeast.github.io/creator-growth-labs/
+**Repo:** https://github.com/varadfromeast/creator-growth-labs
 
-Core pitch:
+---
 
-Creator Growth Lab turns high-signal creator content into paid Meta ad campaigns and assets. The expert agentic system monitors campaigns around the clock, handles the complex Meta ads operating layer, and moves spend toward ads showing buyer intent.
+## Tech Stack
 
-The copy should keep emphasizing:
+| Layer | Choice |
+|-------|--------|
+| Build tool | Vite 8 |
+| Framework | React 19 + JSX |
+| Styling | Pure CSS (no framework) |
+| Animation | `motion` (Framer Motion successor) |
+| Icons | `lucide-react` |
+| Fonts | Archivo (headings), Manrope (body) — loaded via Google Fonts in `index.html` |
+| Deployment | GitHub Pages (served from `gh-pages` branch) |
 
-- Real paying clients, paid demand, and people ready to pay.
-- Relief from Ads Manager, ROAS math, optimization, and constant campaign monitoring.
-- Technical credibility through terms like bidding strategy, budget pacing, attribution windows, learning-phase reads, ROAS, CPA, CTR, CPM, frequency, creative fatigue, and placement breakdowns.
-- Creator focus: the visitor should feel free to keep coaching, creating, selling, and owning the creative/business side.
+---
 
-Avoid:
+## Project Structure
 
-- Vague "warmer DMs" language.
-- Viral-growth promises.
-- Fake dashboard imagery.
-- Repeating the same Meta ads jargon in every section.
-
-## Architecture
-
-Important files:
-
-- `src/content.js`: primary site copy and section data. Edit sales pitch here first.
-- `src/App.jsx`: React component structure, scroll-story sections, CTA links, layout order.
-- `src/styles.css`: full visual system, typography, colors, responsive layout, motion.
-- `PRODUCT.md`: brand strategy and user context for Impeccable.
-- `vite.config.js`: Vite config. `base: "./"` keeps built assets portable for GitHub Pages and custom domains.
-
-The CTA links point to:
-
-`https://www.instagram.com/varad.th/`
-
-## Running Locally
-
-From the project folder:
-
-```bash
-npm install
-npm run dev -- --host 127.0.0.1 --port 5173
+```
+├── index.html              # HTML entry point, loads Google Fonts
+├── vite.config.js          # Vite config. base: "./" for portable asset paths
+├── package.json            # Dependencies + scripts
+├── src/
+│   ├── main.jsx           # React mount point
+│   ├── App.jsx            # Page layout, all sections, scroll animations
+│   ├── content.js         # ALL site copy lives here — edit this first
+│   └── styles.css         # Full visual system, colors, layout, motion
+├── dist/                   # Production build output (deployed to gh-pages)
+└── AGENT_HANDOFF.md       # This file
 ```
 
-Open:
+### Key Files Explained
 
-`http://127.0.0.1:5173/`
+**`src/content.js`** — The single source of truth for all copy. Sections: hero, chapters, offer, process, systems, fit, FAQ, CTA. Edit copy here first, then verify in App.jsx if layout needs adjustment.
 
-Do not rely on opening `index.html` directly from the project root. Vite/React source needs the dev server, or a built `dist` folder.
+**`src/App.jsx`** — React component structure. Imports `content.js` and renders sections in order: Header → Hero → Marquee → Chapter 1 → Offer → Chapter 2 → Process → Chapter 3 → Systems → Fit → FAQ → Final CTA → Footer. Contains scroll-story animations using `motion/react`.
 
-## Build Check
+**`src/styles.css`** — Complete visual system. Uses CSS custom properties (OKLCH color space). Key sections: tokens (`:root`), layout components (`.shell`, `.hero`, etc.), section styles, animations (`@keyframes`), responsive breakpoints (`@media`).
 
-Run:
+**`vite.config.js`** — Minimal. `base: "./"` keeps asset paths relative so the site works on GitHub Pages subpaths or custom domains without changes.
+
+---
+
+## How to Run Locally
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev -- --host 127.0.0.1 --port 5173
+
+# Open in browser
+http://127.0.0.1:5173/
+```
+
+Do NOT open `index.html` directly — Vite/React needs the dev server.
+
+## How to Build
 
 ```bash
 npm run build
 ```
 
-Output goes to:
+Output goes to `dist/` (3 files: `index.html`, `assets/*.js`, `assets/*.css`).
 
-`dist/`
-
-Preview the production build with:
-
+Preview the production build:
 ```bash
 npm run preview -- --host 127.0.0.1 --port 4173
 ```
 
-## Hosting On A Domain
+---
 
-Recommended easy options:
+## How to Deploy
 
-1. Vercel, Netlify, or Cloudflare Pages
-   - Connect the GitHub repo.
-   - Build command: `npm run build`
-   - Output directory: `dist`
-   - Add the custom domain in the provider dashboard.
-   - Follow the provider DNS instructions, usually a CNAME for `www` and an A/ALIAS/CNAME target for the root domain.
+The site is deployed via **GitHub Pages** from the `gh-pages` branch.
 
-2. GitHub Pages
-   - Build the site with `npm run build`.
-   - Deploy the `dist` folder to Pages.
-   - Add the custom domain in GitHub Pages settings.
-   - Add a `CNAME` file containing the domain to the deployed root, or place it in a future `public/CNAME` file so Vite copies it into `dist`.
-   - DNS usually needs a CNAME for `www` pointing to `<github-username>.github.io`, plus GitHub Pages A records for the apex/root domain.
+### Deploy steps
 
-If the site will move from `https://varadfromeast.github.io/creator-growth-lab/` to a custom root domain, keep `base: "./"` unless a hosting platform specifically needs a different value.
+```bash
+# 1. Build first
+npm run build
 
-## Notes For Next Agent
+# 2. Deploy dist folder to gh-pages branch
+cd dist
+rm -rf .git
+git init
+git add .
+git commit -m "Deploy: <describe changes>"
+git branch -M gh-pages
+git remote add origin https://github.com/varadfromeast/creator-growth-labs.git
+git push -u origin gh-pages --force
 
-Use the Impeccable skill for frontend/design changes. This is a brand register project. The page should feel warm, precise, and quietly technical, not like a generic AI SaaS page.
+# 3. Return to project root and push source to main
+cd ..
+git add src/ package.json vite.config.js index.html
+git commit -m "<describe source changes>"
+git push origin main
+```
 
-Current rendered dashboard-style visuals have been removed from the React layout. There may still be unused CSS for the old lab mockup, but it is no longer rendered.
+**Important:** GitHub Pages caches aggressively. After deploy, the live site may take 1-2 minutes to reflect changes. You can verify the build by checking the JS bundle filename in `dist/index.html` matches what's served.
+
+---
+
+## How to Make Changes
+
+### 1. Copy changes
+Edit `src/content.js`. Every section is an object property. The `App.jsx` references these via `content.hero`, `content.offer`, etc.
+
+### 2. Section order or layout changes
+Edit `src/App.jsx`. The `App()` function at the bottom defines the render order. Each section is a component (Hero, Offer, Process, etc.).
+
+### 3. Visual/design changes
+Edit `src/styles.css`. Uses CSS custom properties at the top (`:root`). The color system is OKLCH-based. Key tokens:
+- `--canvas`, `--canvas-2` — warm background gradients
+- `--paper` — main background
+- `--ink`, `--ink-2` — text colors
+- `--coral`, `--coral-strong` — accent/CTA color
+- `--green`, `--green-strong` — success/active indicators
+
+### 4. CTA / links
+The `ExternalCta` component opens `content.instagramUrl` (currently `https://www.instagram.com/varad.th/`). All primary CTAs use this. The footer also links to Instagram.
+
+---
+
+## Current Brand Positioning
+
+**Tone:** Warm, precise, quietly technical. Not a loud agency. Not a vague AI gimmick.
+
+**Anti-references:** Generic AI SaaS pages, dark-blue tech dashboards, fake growth-hacking energy, vanity-metric bragging, template agency pages.
+
+**Key phrases to preserve:**
+- "Focus on content. We'll handle the ad layer."
+- "Agentic system" (not "AI system")
+- "Deep AI experts" (not "technical operators")
+- "Talk with us — drop a DM on @varad.th"
+- Emphasize: real clients, paid demand, no Ads Manager, creator keeps creating
+
+---
+
+## Design Context
+
+The `impeccable` skill is available in this environment at `/Users/varad/.agents/skills/impeccable/`. It has:
+- `PRODUCT.md` loaded (brand register, warm/precise personality)
+- No `DESIGN.md` yet — run `$impeccable document` if you need one
+- Available commands: craft, shape, teach, critique, polish, bolder, quieter, typeset, layout, colorize, delight, etc.
+
+For design changes, load the skill first:
+```bash
+node /Users/varad/.agents/skills/impeccable/scripts/load-context.mjs
+```
+
+---
+
+## Recent Changes (Last Agent Session)
+
+1. **Hero headline** changed to: *"Focus on content. We'll handle the ad layer."*
+2. **Hero lead** rewritten with sharper division of labor — creator creates, system handles ads
+3. **All CTAs** now say *"Talk with us — drop a DM on @varad.th"* and link to Instagram
+4. **Systems copy** changed from "technical operators" to "deep AI experts"
+5. **Visual polish added:** hero ambient glow, marquee edge fades, story card border animation, process connector line, active system dots in console rows, CTA depth gradient
+6. **FAQ** added: "What if I've tried ads before and they didn't work?"
+7. **Proof strip** made visible on all screen sizes
+
+---
+
+## What Not to Do
+
+- Don't change `base: "./"` in `vite.config.js` — GitHub Pages needs this
+- Don't add heavy dependencies — keep it lightweight
+- Don't use gradient text (`background-clip: text`) or glassmorphism as default
+- Don't add fake dashboards or metrics
+- Don't overpromise — no "guaranteed" language, no viral growth promises
+
+---
+
+## Notes for Next Agent
+
+- The CTA links to Instagram DMs. If the user wants to switch to email, Calendly, or another channel, update `content.instagramUrl` and the CTA copy.
+- The footer still says "Instagram: @varad.th" — this should stay for social proof even if primary CTA changes.
+- The site is intentionally single-page. No routing needed.
+- All animations respect `prefers-reduced-motion`.
+- If testing visual changes, use `npm run dev` for fast iteration, then `npm run build` + deploy when satisfied.
