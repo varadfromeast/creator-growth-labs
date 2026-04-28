@@ -8,10 +8,12 @@ export const content = {
   ],
   hero: {
     eyebrow: "For creators who sell coaching, courses, or services",
+    scarcityBadge: "Testing with a small number of creator-led service businesses",
     title: "Focus on content. We'll handle the ad layer.",
     lead:
       "Your job is to create. Not to learn Ads Manager, ROAS math, or campaign optimization. We bring the right paid audience straight to your door. Our agentic system turns your highest-intent posts into small, tested Meta campaigns — handling targeting, budget pacing, A/B testing, and optimization 24/7. You approve everything before it spends a dollar. Then go back to creating.",
     cta: "Talk with us — drop a DM on @varad.th",
+    ctaMicroCopy: "No Ads Manager knowledge needed",
     secondaryCta: "How it works",
   },
   proof: ["Real client inquiries", "Booked calls", "Paid demand", "No Ads Manager"],
@@ -115,11 +117,31 @@ export const content = {
       q: "What if I've tried ads before and they didn't work?",
       a: "Try with us once. We're sure you will see an immediate difference. Most creators launch an ad, panic after three days, and turn it off. Our agentic system handles the hard part — continuous optimization, fatigue detection, and spend reallocation — so your campaigns actually have time to work.",
     },
+    {
+      q: "How do I get my information to you after contacting?",
+      a: "After you DM us, we'll send you a simple form (just your name, email, and Instagram handle). This helps us prepare for our conversation and ensures we can follow up properly.",
+    },
+    {
+      q: "Is my contact information kept private?",
+      a: "Yes. We only use your contact details to discuss your creator growth strategy. We never share, sell, or use your information for anything else.",
+    },
   ],
   cta: {
     kicker: "Ready when your offer is",
     title: "Create content. Serve clients. Let the system handle the ads.",
     text:
       "Your job is to build trust and deliver your service. Our job is to make sure the right people see it — and that your ad spend turns into qualified conversations, not complexity.",
+    ctaMicroCopy: "Start with a free content audit",
+  },
+  leadForm: {
+    title: "Get your free content audit",
+    text: "Before we talk strategy, we'll analyze your content for buying signals — saves, comments, repeat engagement. Takes 2 minutes.",
+    fields: {
+      name: "Your name",
+      email: "Email address",
+      instagram: "Instagram handle (e.g., @yourhandle)",
+    },
+    submit: "Send audit request",
+    skip: "Or DM us directly",
   },
 };

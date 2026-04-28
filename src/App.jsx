@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -8,18 +8,28 @@ import {
   Sparkles,
   TrendingUp,
   Zap,
+  X,
 } from "lucide-react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useReducedMotion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { content } from "./content";
 
 const ease = [0.16, 1, 0.3, 1];
 
-function ExternalCta({ className = "", children = content.hero.cta }) {
+function ExternalCta({ className = "", children = content.hero.cta, microCopy, onClick }) {
   return (
-    <a className={`cta-link ${className}`} href={content.instagramUrl} target="_blank" rel="noreferrer">
-      <span>{children}</span>
-      <ArrowUpRight aria-hidden="true" size={18} strokeWidth={2.4} />
-    </a>
+    <div className="cta-wrapper">
+      <a
+        className={`cta-link ${className}`}
+        href={content.instagramUrl}
+        target="_blank"
+        rel="noreferrer"
+        onClick={onClick}
+      >
+        <span>{children}</span>
+        <ArrowUpRight aria-hidden="true" size={18} strokeWidth={2.4} />
+      </a>
+      {microCopy && <p className="cta-micro-copy">{microCopy}</p>}
+    </div>
   );
 }
 
@@ -69,6 +79,15 @@ function Hero() {
             {content.hero.eyebrow}
           </motion.p>
 
+          <motion.p
+            className="scarcity-badge"
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
+            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, delay: 0.1, ease }}
+          >
+            {content.hero.scarcityBadge}
+          </motion.p>
+
           <h1 id="hero-title">
             {heroWords.map((word, index) => (
               <motion.span
@@ -97,7 +116,7 @@ function Hero() {
             animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45, ease }}
           >
-            <ExternalCta />
+            <ExternalCta microCopy={content.hero.ctaMicroCopy} />
             <a className="ghost-link" href="#systems">
               <span>{content.hero.secondaryCta}</span>
               <ArrowRight aria-hidden="true" size={18} strokeWidth={2.4} />
@@ -317,7 +336,90 @@ function Faq() {
   );
 }
 
+function LeadForm({ onClose }) {
+  const [formData, setFormData] = useState({ name: "", email: "", instagram: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you would integrate with your backend/Airtable/Google Sheets
+    console.log("Form submitted:", formData);
+    setSubmitted(true);
+    setTimeout(() => {
+      onClose();
+    }, 2000);
+  };
+
+  return (
+    <motion.div
+      className="lead-form-overlay"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+    >
+      <motion.div
+        className="lead-form-panel"
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 20, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button className="form-close" onClick={onClose} aria-label="Close form">
+          <X size={24} />
+        </button>
+
+        {!submitted ? (
+          <>
+            <h3>{content.leadForm.title}</h3>
+            <p>{content.leadForm.text}</p>
+
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder={content.leadForm.fields.name}
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                required
+              />
+              <input
+                type="email"
+                placeholder={content.leadForm.fields.email}
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
+              />
+              <input
+                type="text"
+                placeholder={content.leadForm.fields.instagram}
+                value={formData.instagram}
+                onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
+                required
+              />
+              <button type="submit" className="form-submit">
+                {content.leadForm.submit}
+              </button>
+            </form>
+
+            <a href={content.instagramUrl} target="_blank" rel="noreferrer" className="form-skip">
+              {content.leadForm.skip}
+            </a>
+          </>
+        ) : (
+          <div className="form-success">
+            <CheckCircle2 size={48} />
+            <h3>Request received!</h3>
+            <p>We'll analyze your content and reach out within 24 hours.</p>
+          </div>
+        )}
+      </motion.div>
+    </motion.div>
+  );
+}
+
 function FinalCta() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <section className="final-cta shell" id="talk" aria-labelledby="cta-title">
       <ScrollReveal className="cta-panel">
@@ -326,8 +428,15 @@ function FinalCta() {
           <h2 id="cta-title">{content.cta.title}</h2>
           <p>{content.cta.text}</p>
         </div>
-        <ExternalCta />
+        <ExternalCta microCopy={content.cta.ctaMicroCopy} onClick={(e) => {
+          e.preventDefault();
+          setShowForm(true);
+        }} />
       </ScrollReveal>
+
+      <AnimatePresence>
+        {showForm && <LeadForm onClose={() => setShowForm(false)} />}
+      </AnimatePresence>
     </section>
   );
 }
@@ -355,10 +464,56 @@ function ScrollProgress() {
   return <motion.div className="scroll-progress" style={{ scaleX }} aria-hidden="true" />;
 }
 
+function StickyMobileCta() {
+  const [showForm, setShowForm] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const { scrollY } = useScroll();
+
+  useEffect(() => {
+    return scrollY.on("change", (latest) => {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollThreshold = windowHeight * 0.5;
+      const footerThreshold = documentHeight - windowHeight - 400;
+
+      setIsVisible(latest > scrollThreshold && latest < footerThreshold && window.innerWidth <= 879);
+    });
+  }, [scrollY]);
+
+  return (
+    <>
+      <AnimatePresence>
+        {isVisible && (
+          <motion.div
+            className="sticky-mobile-cta"
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.3, ease }}
+          >
+            <button
+              className="cta-link"
+              onClick={() => setShowForm(true)}
+            >
+              <span>Get free content audit</span>
+              <ArrowUpRight aria-hidden="true" size={18} strokeWidth={2.4} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showForm && <LeadForm onClose={() => setShowForm(false)} />}
+      </AnimatePresence>
+    </>
+  );
+}
+
 function App() {
   return (
     <>
       <ScrollProgress />
+      <StickyMobileCta />
       <Header />
       <main id="main">
         <Hero />
@@ -378,10 +533,7 @@ function App() {
       </main>
       <footer className="site-footer">
         <div className="shell footer-inner">
-          <span>Creator Growth Lab is testing with a small number of creator-led service businesses.</span>
-          <a href={content.instagramUrl} target="_blank" rel="noreferrer">
-            Instagram: @varad.th
-          </a>
+          <span>Instagram: @varad.th</span>
         </div>
       </footer>
     </>
