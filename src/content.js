@@ -7,14 +7,14 @@ export const content = {
     { label: "Fit", href: "#fit" },
   ],
   hero: {
-    eyebrow: "Paid growth for creator-led services",
+    eyebrow: "For creators who sell coaching, courses, or services",
     title: "Focus on content. We'll handle the ad layer.",
     lead:
       "Your job is to create. Not to learn Ads Manager, ROAS math, or campaign optimization. We bring the right paid audience straight to your door. Our agentic system turns your highest-intent posts into small, tested Meta campaigns — handling targeting, budget pacing, A/B testing, and optimization 24/7. You approve everything before it spends a dollar. Then go back to creating.",
     cta: "Talk with us — drop a DM on @varad.th",
     secondaryCta: "How it works",
   },
-  proof: ["Real coaching inquiries", "Booked calls", "Paid demand", "No Ads Manager"],
+  proof: ["Real client inquiries", "Booked calls", "Paid demand", "No Ads Manager"],
   chapters: [
     {
       label: "The first thing you should know",
