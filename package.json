@@ -1,0 +1,25 @@
+{
+  "name": "creator-growth-lab",
+  "version": "1.0.0",
+  "description": "Creator Growth Lab landing page",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "lucide-react": "^1.11.0",
+    "motion": "^12.38.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "vite": "^8.0.10"
+  }
+}
