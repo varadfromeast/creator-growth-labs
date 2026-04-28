@@ -8,56 +8,56 @@ export const content = {
   ],
   hero: {
     eyebrow: "Paid growth for creator-led services",
-    title: "Managing ads is confusing. Your growth shouldn't be.",
+    title: "Focus on content. We'll handle the ad layer.",
     lead:
-      "Your content already creates trust. We turn the strongest signals into paid Meta ad campaigns and assets. Then our expert agentic system monitors campaigns around the clock, built specifically to help creator businesses turn ad spend into qualified demand.",
-    cta: "Talk to us",
-    secondaryCta: "See the system",
+      "You already create content that builds trust. We take your highest-intent posts and turn them into small, tested Meta ad campaigns. Our agentic system handles targeting, budget pacing, A/B testing, and optimization around the clock — so you never open Ads Manager. You approve everything before it spends a dollar, then go back to creating.",
+    cta: "See if your content is a fit",
+    secondaryCta: "How it works",
   },
-  proof: ["Real paying clients", "Paid demand", "People ready to pay", "Meta ads handled"],
+  proof: ["Real coaching inquiries", "Booked calls", "Paid demand", "No Ads Manager"],
   chapters: [
     {
       label: "The first thing you should know",
-      title: "Your posts already contain demand signals.",
+      title: "Your posts already prove who wants to buy.",
       text:
-        "A save, a comment, a repeat viewer, a question about your offer. Those are not random engagement blips. They are clues about who is closest to buying.",
-      chips: ["saves", "comments", "watch time", "offer fit"],
+        "A save on a coaching tip. A comment asking about your program. Someone watching your Reel three times. These aren't vanity metrics. They're buying intent hiding in plain sight. We find them.",
+      chips: ["saves", "comments", "repeat viewers", "offer questions"],
     },
     {
       label: "The second thing you should know",
-      title: "Paid assets show who is ready to buy.",
+      title: "Paid ads find the people organic missed.",
       text:
-        "We are not trying to make every post famous. We package trust-building posts into paid Meta assets, then test angles, audiences, and buying signals without asking you to live inside Ads Manager.",
-      chips: ["paid Meta assets", "offer angles", "buyer intent", "weak angles paused"],
+        "Organic posts reach who the algorithm decides. Paid ads reach who you decide — specifically, people with the problem you solve, who've never seen your content, and are ready to pay for help. We turn your proven posts into campaigns that find them, without you learning a single Meta ads concept.",
+      chips: ["buyer-intent audiences", "proven creative", "no ad learning curve"],
     },
     {
       label: "The third thing you should know",
-      title: "The hard part happens after launch.",
+      title: "The real work starts after you hit publish.",
       text:
-        "Budget pacing, A/B tests, delivery shifts, fatigue signals, attribution reads, and ROAS are monitored continuously so spend can move toward what is working.",
-      chips: ["A/B tests", "fatigue signals", "ROAS reads", "spend movement"],
+        "Most creators launch an ad, watch it for three days, panic, and turn it off. The real game is budget pacing, creative fatigue, attribution reads, and moving spend toward what converts. Our agentic system monitors this around the clock. You get the results. We handle the operating layer.",
+      chips: ["24/7 optimization", "fatigue detection", "spend reallocation", "ROAS tracking"],
     },
   ],
   offer: {
     kicker: "The offer",
-    title: "Your content already tells us where demand is.",
+    title: "A small paid test with your existing content.",
     text:
-      "The job is not to make you louder. It is to find the posts that already prove trust, put them in front of better buyers, and learn where budget deserves to go next.",
+      "No new creative needed. No long contract. We identify your best-performing posts, build small Meta campaigns around them, and let data show which angles turn viewers into inquiries. You approve every campaign before it goes live.",
     points: [
       {
-        title: "Start from proven trust",
+        title: "Start with what already works",
         text:
-          "Comments, saves, shares, watch behavior, and offer fit help reveal which posts deserve paid testing.",
+          "We audit your content for posts with real buying signals — saves, comments, offer questions, repeat engagement — then select the top candidates for testing.",
       },
       {
-        title: "Aim for buyers",
+        title: "Run a small, controlled test",
         text:
-          "The goal is paid demand from people who understand the problem, trust the creator, and are ready to pay for a service.",
+          "Multiple angles. Targeted audiences. Real data on what drives DMs, calls, and inquiries. No guesswork. You see exactly what works before scaling.",
       },
       {
-        title: "Keep creators out of ad chaos",
+        title: "Let the agentic system handle the operating layer",
         text:
-          "Campaign structure, bidding strategy, budget pacing, creative testing, A/B testing, placement breakdowns, attribution windows, learning-phase reads, ROAS, CPA, CTR, CPM, frequency, and daily monitoring are handled by the system, so you can stay focused on your offer, your content, and your creative business.",
+          "Campaign structure, bid strategy, budget pacing, A/B testing, placement breakdowns, attribution reads, ROAS tracking, and creative fatigue monitoring. You focus on coaching. The system handles the complexity.",
       },
     ],
   },
@@ -67,19 +67,19 @@ export const content = {
     steps: [
       "We find high-signal content from all your posts.",
       "We turn it into paid Meta ad campaigns and assets designed to reach people ready to pay for your service.",
-      "Our expert agentic system watches performance, fatigue, attribution, and budget pacing so spend can move toward the ads attracting buyers.",
+      "Our agentic system watches performance, fatigue, attribution, and budget pacing so spend can move toward the ads attracting buyers.",
     ],
   },
   systems: {
-    kicker: "How the system works for you",
-    title: "The Meta ads operating layer, handled.",
+    kicker: "What happens behind the scenes",
+    title: "The Meta ads operating layer, automated.",
     text:
-      "Creator Growth Lab is built by technical AI operators for the decisions most creators should not have to babysit: campaign structure, bidding strategy, placement breakdowns, attribution windows, learning-phase reads, ROAS, CPA, CTR, CPM, frequency, creative fatigue, and budget pacing.",
+      "Creator Growth Lab is built by technical operators who understand that creators shouldn't be media buyers. Our agentic system handles the decisions most people pay agencies thousands for — without the agency overhead, meetings, or vague reporting.",
     rows: [
-      ["structure", "Build the campaign logic around your offer"],
-      ["asset", "Turn proven posts into paid Meta assets"],
-      ["monitor", "Watch delivery, fatigue, and attribution signals"],
-      ["optimize", "Shift budget toward ads showing buyer intent"],
+      ["scan", "Analyze content for buying signals and engagement quality"],
+      ["build", "Turn proven posts into paid Meta campaigns"],
+      ["watch", "Monitor delivery, fatigue, and attribution 24/7"],
+      ["optimize", "Move budget toward ads that drive inquiries and calls"],
     ],
   },
   fit: {
@@ -101,7 +101,7 @@ export const content = {
   faq: [
     {
       q: "Do I need to understand Ads Manager?",
-      a: "No. Campaign structure, bid strategy, attribution windows, learning-phase reads, budget pacing, fatigue monitoring, ROAS reads, and optimization decisions are handled for you.",
+      a: "No. Campaign structure, bid strategy, attribution windows, learning-phase reads, budget pacing, fatigue monitoring, ROAS reads, and optimization decisions are handled by the agentic system.",
     },
     {
       q: "What kind of creators is this for?",
@@ -111,11 +111,15 @@ export const content = {
       q: "What result are we optimizing for?",
       a: "Paid demand, people ready to pay, and a cleaner path toward real clients, not vanity engagement.",
     },
+    {
+      q: "What if I've tried ads before and they didn't work?",
+      a: "Try with us once. We're sure you will see an immediate difference. Most creators launch an ad, panic after three days, and turn it off. Our agentic system handles the hard part — continuous optimization, fatigue detection, and spend reallocation — so your campaigns actually have time to work.",
+    },
   ],
   cta: {
     kicker: "Ready when your offer is",
-    title: "Let your best content bring real clients.",
+    title: "Create content. Coach clients. Let the system handle the ads.",
     text:
-      "Your job is to create trust and sell the transformation. Let the system handle the campaign math, analytics, and optimization required to turn that trust into paid demand.",
+      "Your job is to build trust and sell the transformation. Our job is to make sure the right people see it — and that your ad spend turns into qualified conversations, not confusion.",
   },
 };

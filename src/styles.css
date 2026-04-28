@@ -256,11 +256,31 @@ summary:focus-visible {
 }
 
 .hero {
+  position: relative;
   padding: clamp(34px, 7vw, 86px) 0 clamp(44px, 7vw, 90px);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 900px;
+  max-height: 900px;
+  border-radius: 50%;
+  background: radial-gradient(circle, oklch(70% 0.15 35 / 0.18) 0%, transparent 70%);
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero-grid {
+  position: relative;
   display: block;
+  z-index: 1;
 }
 
 .hero-copy {
@@ -357,7 +377,20 @@ p {
 }
 
 .proof-strip {
-  display: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.proof-strip span {
+  border: 1px solid oklch(18% 0.062 326 / 0.14);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: oklch(99% 0.018 54 / 0.46);
+  color: var(--ink-2);
+  font-size: 0.82rem;
+  font-weight: 900;
 }
 
 .lab {
@@ -613,10 +646,32 @@ p {
 }
 
 .marquee {
+  position: relative;
   border-block: 1px solid oklch(18% 0.062 326 / 0.16);
   background: var(--ink);
   color: var(--paper);
   overflow: hidden;
+}
+
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--ink), transparent);
+}
+
+.marquee::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--ink), transparent);
 }
 
 .marquee-track {
@@ -696,6 +751,21 @@ p {
   box-shadow: var(--shadow-md);
   overflow: hidden;
   will-change: transform, opacity;
+}
+
+.story-proof::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from 0deg, var(--green), var(--coral), var(--butter), var(--green));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.3;
+  animation: border-rotate 8s linear infinite;
+  pointer-events: none;
 }
 
 .story-proof::before {
@@ -849,6 +919,7 @@ p {
 }
 
 .process-board {
+  position: relative;
   display: grid;
   margin-top: 28px;
   border: 1px solid oklch(18% 0.062 326 / 0.18);
@@ -939,6 +1010,7 @@ p {
 }
 
 .console-icon {
+  position: relative;
   display: grid;
   width: 42px;
   height: 42px;
@@ -946,6 +1018,19 @@ p {
   border-radius: 999px;
   background: var(--green);
   color: var(--ink);
+}
+
+.console-icon::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green-strong);
+  border: 1.5px solid var(--paper);
+  animation: pulse-dot 2.5s ease-in-out infinite;
 }
 
 .console-row strong {
@@ -962,6 +1047,16 @@ p {
   font-size: 0.78rem;
   font-style: normal;
   font-weight: 900;
+}
+
+.console-row {
+  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out), background-color 200ms var(--ease-out);
+}
+
+.console-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px oklch(20% 0.06 326 / 0.1);
+  background: oklch(99% 0.018 54 / 0.85);
 }
 
 .fit-section {
@@ -1044,6 +1139,7 @@ details p {
 }
 
 .cta-panel {
+  position: relative;
   display: grid;
   gap: 26px;
   align-items: end;
@@ -1052,6 +1148,25 @@ details p {
   padding: clamp(28px, 6vw, 64px);
   background: var(--coral);
   box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.cta-panel::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  right: -30%;
+  width: 90%;
+  height: 180%;
+  border-radius: 50%;
+  background: radial-gradient(circle, oklch(70% 0.18 30 / 0.35) 0%, transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.cta-panel > * {
+  position: relative;
+  z-index: 1;
 }
 
 .cta-panel .cta-link {
@@ -1089,6 +1204,17 @@ details p {
   50% {
     transform: scale(1.08);
   }
+}
+
+@keyframes border-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1206,6 +1332,19 @@ details p {
 
   .process-board {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .process-board::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 33.33%;
+    right: 33.33%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--green), transparent);
+    z-index: 1;
+    opacity: 0.45;
+    pointer-events: none;
   }
 
   .process-step {
