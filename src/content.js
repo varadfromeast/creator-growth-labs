@@ -118,8 +118,8 @@ export const content = {
   ],
   cta: {
     kicker: "Ready when your offer is",
-    title: "Create content. Coach clients. Let the system handle the ads.",
+    title: "Create content. Serve clients. Let the system handle the ads.",
     text:
-      "Your job is to build trust and sell the transformation. Our job is to make sure the right people see it — and that your ad spend turns into qualified conversations, not confusion.",
+      "Your job is to build trust and deliver your service. Our job is to make sure the right people see it — and that your ad spend turns into qualified conversations, not complexity.",
   },
 };
