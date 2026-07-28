@@ -2,16 +2,16 @@
 
 ## Overview
 
-Creator Growth Lab is a Vite + React landing page for a selective creator-led software venture studio.
+Creator Growth Lab is a Vite + React landing page for creator app and SaaS partnerships.
 
-**Core pitch:** A trusted niche creator brings audience knowledge, product judgment, and distribution. Creator Growth Lab validates the problem, funds and builds the product, and operates the software business. Both parties share ownership and upside under a written venture agreement.
+**Core pitch:** A creator brings a trusted audience, product judgment, and agreed promotion. Creator Growth Lab validates the problem, funds and builds the app or SaaS, and operates the product. The partnership converts creator distribution into paying software customers and shares the upside under a written agreement.
 
 **Live site:** https://creator-growth-lab.com
 **Repository:** https://github.com/varadfromeast/creator-growth-labs
 
 ## Positioning guardrails
 
-- Say “partnership” or “venture,” not “development agency.”
+- Lead with “product partnership” and the conversion of creator distribution into paid users.
 - Code generation is leverage, not the moat.
 - Validation happens before production development.
 - Qualify creators on trust, recurring pain, and buyer behavior—not follower count alone.

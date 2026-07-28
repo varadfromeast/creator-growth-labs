@@ -55,7 +55,7 @@ function VentureBlueprint() {
       aria-label="Creator and studio inputs combine into a recurring software venture"
     >
       <div className="blueprint-top">
-        <span>Venture blueprint</span>
+        <span>Product partnership</span>
         <span className="status"><CircleDot size={14} aria-hidden="true" /> Selective</span>
       </div>
       <div className="blueprint-inputs">
@@ -74,7 +74,7 @@ function VentureBlueprint() {
       <div className="blueprint-output">
         <Sparkles size={20} aria-hidden="true" />
         <div>
-          <span>Shared venture</span>
+          <span>Paid product</span>
           <strong>Useful software people keep paying for.</strong>
         </div>
         <ArrowRight size={20} aria-hidden="true" />
@@ -112,6 +112,29 @@ function Hero({ onApply }) {
           <p className="hero-note"><Check size={16} aria-hidden="true" />{content.hero.note}</p>
         </motion.div>
         <VentureBlueprint />
+      </div>
+    </section>
+  );
+}
+
+function Proof() {
+  return (
+    <section className="proof-section" id="proof" aria-labelledby="proof-title">
+      <div className="shell">
+        <div className="proof-intro">
+          <h2 id="proof-title">{content.proof.title}</h2>
+          <p>{content.proof.text}</p>
+        </div>
+        <div className="proof-examples">
+          {content.proof.examples.map((example) => (
+            <a href={example.url} target="_blank" rel="noreferrer" key={example.product}>
+              <span>{example.creator}</span>
+              <strong>{example.product}</strong>
+              <p>{example.story}</p>
+              <small>{example.proof}<ArrowUpRight size={14} aria-hidden="true" /></small>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -263,7 +286,7 @@ function FinalCta({ onApply }) {
 
 function ApplicationForm({ onClose }) {
   const [formData, setFormData] = useState({
-    name: "", email: "", instagram: "", niche: "", problem: "",
+    name: "", email: "", instagram: "", category: "", problem: "",
   });
   const [state, setState] = useState("idle");
   const reduceMotion = useReducedMotion();
@@ -289,7 +312,7 @@ function ApplicationForm({ onClose }) {
       const response = await fetch(content.formspreeEndpoint, {
         method: "POST",
         headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, source: "Creator venture studio landing page" }),
+        body: JSON.stringify({ ...formData, source: "Creator product partnership landing page" }),
       });
       if (!response.ok) throw new Error("Submission failed");
       setState("success");
@@ -338,7 +361,7 @@ function ApplicationForm({ onClose }) {
               </div>
               <div className="field-row">
                 <label>Channel<input name="instagram" required placeholder={content.leadForm.fields.instagram} value={formData.instagram} onChange={update} /></label>
-                <label>Niche<input name="niche" required placeholder={content.leadForm.fields.niche} value={formData.niche} onChange={update} /></label>
+                <label>Audience category<input name="category" required placeholder={content.leadForm.fields.category} value={formData.category} onChange={update} /></label>
               </div>
               <label>Recurring audience problem<textarea name="problem" required rows="4" placeholder={content.leadForm.fields.problem} value={formData.problem} onChange={update} /></label>
               {state === "error" && <p className="form-error" role="alert">{content.leadForm.error}</p>}
@@ -360,6 +383,7 @@ export default function App() {
       <Header onApply={() => setShowForm(true)} />
       <main id="main">
         <Hero onApply={() => setShowForm(true)} />
+        <Proof />
         <Model />
         <Why />
         <Process />

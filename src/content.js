@@ -3,58 +3,94 @@ export const content = {
   formspreeEndpoint: "https://formspree.io/f/xojyoooy",
   nav: [
     { label: "The model", href: "#model" },
+    { label: "Proof", href: "#proof" },
     { label: "How it works", href: "#process" },
     { label: "Who we partner with", href: "#fit" },
   ],
   hero: {
-    signal: "A selective venture studio for niche creators",
-    title: "You bring the audience. We build the software company.",
+    signal: "App & SaaS partnerships for creators",
+    title: "Turn your audience into paying software customers.",
     lead:
-      "We partner with trusted niche creators to validate, fund, build, and operate useful subscription apps. You bring expertise and distribution. We share the ownership and upside.",
-    cta: "Apply to build together",
+      "We partner with creators to find a product their audience will pay for, build the app or SaaS, and launch it through their distribution. You bring the audience. We handle product and technology. We share the upside.",
+    cta: "Explore a product partnership",
     secondaryCta: "See the partnership model",
-    note: "No development invoice. Clear commitments before we build.",
+    note: "Ownership, economics, and promotion are agreed before we build.",
+  },
+  proof: {
+    title: "Creators are already proving the model.",
+    text:
+      "Distribution creates the launch. A useful product turns that attention into recurring revenue.",
+    examples: [
+      {
+        creator: "Ali Abdaal",
+        product: "VoicePal",
+        story: "Productivity audience → writing app",
+        proof: "First of a planned app suite",
+        url: "https://aliabdaal.com/about/",
+      },
+      {
+        creator: "Jeff Nippard",
+        product: "MacroFactor",
+        story: "Fitness education → subscription app",
+        proof: "500,000 users",
+        url: "https://macrofactor.com/macrofactor/",
+      },
+      {
+        creator: "MrBeast",
+        product: "ViewStats",
+        story: "YouTube expertise → analytics SaaS",
+        proof: "Free and Pro products",
+        url: "https://www.viewstats.com/info",
+      },
+      {
+        creator: "Alakh Pandey",
+        product: "Physics Wallah",
+        story: "YouTube teaching → paid learning app",
+        proof: "10M+ paid students",
+        url: "https://www.pw.live/about-us",
+      },
+    ],
   },
   model: {
-    title: "One venture. Two unfair advantages.",
+    title: "The partnership is simple.",
     intro:
-      "The best creator software starts with a real audience problem—not a random app idea.",
+      "Your distribution removes the biggest risk in software: reaching the right people.",
     creator: {
       label: "You bring",
-      title: "Trust + distribution",
+      title: "Audience + promotion",
       points: [
-        "Deep knowledge of your niche",
-        "Direct access to the people with the problem",
-        "Product judgment and agreed launch support",
+        "An audience that trusts your recommendations",
+        "Audience insight and product feedback",
+        "Agreed launch content and ongoing distribution",
       ],
     },
     studio: {
       label: "We bring",
       title: "Product + operations",
       points: [
-        "Audience research and paid validation",
-        "Product design, engineering, and initial capital",
+        "Product research and paid-demand validation",
+        "App or SaaS design, engineering, and initial capital",
         "Billing, analytics, support, security, and iteration",
       ],
     },
-    together: "Together, we own and grow the venture.",
+    together: "Together, we turn attention into paid users—and share the upside.",
   },
   why: {
-    title: "AI can generate an app. It cannot run the company.",
+    title: "Building got cheap. Distribution did not.",
     text:
-      "Lovable, Replit, and similar tools make construction faster. We use that leverage. The hard work is choosing the right problem, proving demand, creating retention, and operating the product after launch.",
+      "AI builders can generate screens quickly. They cannot create trust, validate demand, or persuade an audience to pay and keep paying. That is why we start with a creator partnership, not a codebase.",
     outcomes: [
-      "What to build",
-      "Will people pay",
-      "Why they stay",
-      "Who operates it",
+      "The right problem",
+      "Proof people will pay",
+      "Launch distribution",
+      "Retention after launch",
     ],
   },
   process: {
-    title: "We earn the build before we write it.",
+    title: "No code until the audience says yes.",
     steps: [
       {
-        title: "Find the recurring pain",
+        title: "Find the paid product opportunity",
         text: "We study audience questions, comments, workflows, and buying behavior.",
       },
       {
@@ -63,18 +99,18 @@ export const content = {
       },
       {
         title: "Agree on the partnership",
-        text: "Ownership, launch content, responsibilities, and decision rights go in writing.",
+        text: "Ownership, economics, launch content, and responsibilities go in writing.",
       },
       {
-        title: "Build, launch, and operate",
-        text: "We ship quickly, then own the unglamorous work: retention, support, and iteration.",
+        title: "Build, launch, and convert",
+        text: "We ship the app or SaaS, launch through your channels, then improve conversion and retention.",
       },
     ],
   },
   fit: {
-    title: "We choose authority, not follower count.",
+    title: "We choose distribution that can convert.",
     text:
-      "A smaller trusted audience with a painful recurring problem is more valuable than broad reach.",
+      "A large following is not enough. We look for trust, a clear audience, and a recurring problem worth paying to solve.",
     yes: [
       "Your audience repeatedly asks for help with the same workflow",
       "People already act on or buy from your recommendations",
@@ -88,9 +124,9 @@ export const content = {
     ],
   },
   deal: {
-    title: "Aligned from day one.",
+    title: "Aligned before we build.",
     text:
-      "We invest before launch instead of charging a development fee. If validation passes, we form a clear venture agreement with shared ownership, defined creator commitments, and long-term operating responsibility on our side.",
+      "We fund validation and product development instead of charging a development fee. Before we build, we agree ownership, economics, creator promotion commitments, and ongoing responsibilities.",
   },
   faq: [
     {
@@ -106,25 +142,25 @@ export const content = {
       a: "You can. That solves construction. Our partnership also covers validation, product decisions, capital, billing, support, security, retention, and ongoing operation.",
     },
     {
-      q: "Is every deal 50/50?",
-      a: "No fixed split is promised on this page. Ownership reflects the opportunity, contribution, capital, and ongoing responsibilities, and is agreed before production begins.",
+      q: "How does the partnership work?",
+      a: "Each deal reflects the audience, opportunity, capital, promotion commitments, and ongoing work. The exact ownership and economics are agreed before production begins.",
     },
   ],
   finalCta: {
-    title: "Your audience may already contain a software company.",
-    text: "Tell us what they keep asking you for. We’ll tell you if it looks venture-worthy.",
-    cta: "Pitch your audience",
+    title: "Your audience could be your first 1,000 customers.",
+    text: "Tell us who follows you and what they keep asking for. We’ll find the paid product opportunity.",
+    cta: "Explore a partnership",
     note: "Selective applications · You’ll hear directly from the studio",
   },
   leadForm: {
-    title: "Pitch your audience",
+    title: "Tell us about your audience",
     text:
-      "We care more about trust and recurring pain than raw follower count.",
+      "We care about trust, buying behavior, and recurring problems—not follower count alone.",
     fields: {
       name: "Your name",
       email: "Work email",
       instagram: "Your main channel or handle",
-      niche: "Your niche",
+      category: "What does your audience come to you for?",
       problem: "What does your audience repeatedly ask for help with?",
     },
     submit: "Send partnership application",

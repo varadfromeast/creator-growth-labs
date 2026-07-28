@@ -125,7 +125,7 @@ The problem is real and urgent if:
 ### Where to Find Them
 
 1. **Instagram:** #onlinecoach, #fitnesscoach — accounts with 10-50k followers, coaching offer in bio
-2. **Skool communities:** Free coaching communities (Hormozi's groups, niche Skools)
+2. **Skool communities:** Free coaching communities (Hormozi's groups and focused creator groups)
 3. **Facebook Groups:** "Online Coaches & Course Creators," "High Ticket Coaches"
 4. **YouTube comments:** Under "Facebook ads for coaches" videos
 5. **Twitter/X:** Coaches posting about growth struggles
@@ -200,7 +200,7 @@ Instead of learning ads manually first, encode expert knowledge into the system:
 
 ### Scope Constraints (Initial)
 
-- **One niche:** Fitness coaches
+- **One initial segment:** Fitness coaches
 - **One offer type:** High-ticket coaching ($1-3k)
 - **One objective:** Lead generation only
 - **One placement:** Instagram feed + stories
@@ -298,7 +298,7 @@ Target: 70%+ retention proves ongoing value delivery.
 | Date | Decision | Rationale |
 |------|----------|-----------|
 | 2026-04-28 | RAG-based approach over manual-first | Founders have AI expertise, not ads expertise. RAG can encode expert knowledge. Higher risk but plays to strengths. |
-| 2026-04-28 | Narrow initial scope to fitness coaches | Reduce variables, build expertise in one niche before expanding. |
+| 2026-04-28 | Narrow initial scope to fitness coaches | Reduce variables and build focused expertise before expanding. |
 | 2026-04-28 | Test on own money before client money | Validate AI decisions without burning client trust. |
 
 ---

@@ -6,11 +6,11 @@ brand
 
 ## Users
 
-Creator Growth Lab serves trusted niche creators and experts whose audiences repeatedly face a specific, valuable problem. Follower count matters less than authority, buying behavior, and willingness to launch and shape a product with us.
+Creator Growth Lab serves creators and experts with trusted distribution whose audiences repeatedly face a specific, valuable problem. Follower count matters less than authority, buying behavior, and willingness to launch and shape a product with us.
 
 ## Product Purpose
 
-Creator Growth Lab is a selective venture studio for creator-led software. We research and validate an audience problem, fund and build the product, then operate billing, analytics, support, security, retention, and iteration. The creator contributes domain expertise, product judgment, and agreed distribution. Both parties share ownership and upside under terms agreed before production.
+Creator Growth Lab partners with creators to turn their distribution into paying users for an app or SaaS. We research and validate an audience problem, fund and build the product, then operate billing, analytics, support, security, retention, and iteration. The creator contributes audience insight, product judgment, and agreed promotion. Both parties share ownership and upside under terms agreed before production.
 
 The page should make this division of labor understandable in seconds and invite qualified creators to apply.
 
@@ -24,7 +24,7 @@ Avoid generic SaaS layouts, venture-capital theater, vague “turn followers int
 
 ## Design Principles
 
-1. State the model immediately: creator brings trust and distribution; studio validates, builds, and operates.
+1. State the model immediately: creator brings audience and promotion; studio validates, builds, and operates the app or SaaS.
 2. Explain why this is more than using an AI app builder.
 3. Qualify for authority and recurring audience pain, not raw follower count.
 4. Make validation precede development.

@@ -272,6 +272,42 @@ p { margin: 0; text-wrap: pretty; }
   font-weight: 750;
 }
 
+.proof-section {
+  padding: clamp(70px, 9vw, 112px) 0;
+  background: var(--lime);
+}
+.proof-intro {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(28px, 7vw, 90px);
+  align-items: end;
+}
+.proof-intro h2 { max-width: 12ch; font-size: clamp(2rem, 4vw, 3.8rem); }
+.proof-intro p { max-width: 52ch; color: var(--ink-2); font-weight: 650; }
+.proof-examples {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 44px;
+  border-top: 1px solid color-mix(in oklch, var(--ink) 28%, transparent);
+  border-bottom: 1px solid color-mix(in oklch, var(--ink) 28%, transparent);
+}
+.proof-examples a {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: 24px 20px;
+  border-right: 1px solid color-mix(in oklch, var(--ink) 28%, transparent);
+  text-decoration: none;
+  transition: background-color 180ms var(--ease);
+}
+.proof-examples a:first-child { padding-left: 0; }
+.proof-examples a:last-child { border-right: 0; }
+.proof-examples a:hover { background: color-mix(in oklch, var(--white) 25%, transparent); }
+.proof-examples span { color: var(--ink-2); font-size: .78rem; font-weight: 800; }
+.proof-examples strong { margin-top: 4px; font: 900 clamp(1.25rem, 2vw, 1.7rem) Archivo, sans-serif; letter-spacing: -.02em; }
+.proof-examples p { min-height: 3.1em; margin-top: 14px; color: var(--ink-2); font-size: .86rem; font-weight: 650; }
+.proof-examples small { display: flex; align-items: center; gap: 5px; margin-top: 18px; color: var(--ink); font-weight: 850; }
+
 .model-section { padding: clamp(88px, 11vw, 150px) 0; background: var(--paper-2); }
 .section-intro { display: flex; align-items: end; justify-content: space-between; gap: 40px; }
 .section-intro h2 { max-width: 12ch; }
@@ -450,6 +486,10 @@ p { margin: 0; text-wrap: pretty; }
   .nav-links { display: none; }
   .nav-button { margin-left: auto; }
   .hero-grid, .why-grid, .fit-grid, .deal-section { grid-template-columns: 1fr; }
+  .proof-examples { grid-template-columns: repeat(2, 1fr); }
+  .proof-examples a:nth-child(2) { border-right: 0; }
+  .proof-examples a:nth-child(-n + 2) { border-bottom: 1px solid color-mix(in oklch, var(--ink) 28%, transparent); }
+  .proof-examples a:nth-child(3) { padding-left: 0; }
   .hero-grid { gap: 54px; }
   .venture-blueprint { max-width: 570px; }
   .why-grid { align-items: start; }
@@ -481,6 +521,12 @@ p { margin: 0; text-wrap: pretty; }
   .blueprint-output > svg:last-child { display: none; }
   .blueprint-terms { display: none; }
   .section-intro { align-items: flex-start; flex-direction: column; gap: 20px; }
+  .proof-intro { grid-template-columns: 1fr; align-items: start; }
+  .proof-examples { grid-template-columns: 1fr; }
+  .proof-examples a,
+  .proof-examples a:nth-child(3) { padding: 20px 0; border-right: 0; border-bottom: 1px solid color-mix(in oklch, var(--ink) 28%, transparent); }
+  .proof-examples a:last-child { border-bottom: 0; }
+  .proof-examples p { min-height: 0; }
   .model-split { grid-template-columns: 1fr; }
   .model-column { padding: 34px 0; }
   .model-column:first-child { border-right: 0; border-bottom: 1px solid var(--line); }
