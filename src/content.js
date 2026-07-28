@@ -6,6 +6,7 @@ export const content = {
     { label: "Proof", href: "#proof" },
     { label: "How it works", href: "#process" },
     { label: "Who we partner with", href: "#fit" },
+    { label: "Team", href: "#team" },
   ],
   hero: {
     signal: "App & SaaS partnerships for creators",
@@ -87,7 +88,7 @@ export const content = {
     ],
   },
   process: {
-    title: "No code until the audience says yes.",
+    title: "The process we follow.",
     steps: [
       {
         title: "Find the paid product opportunity",
@@ -127,6 +128,27 @@ export const content = {
     title: "Aligned before we build.",
     text:
       "We fund validation and product development instead of charging a development fee. Before we build, we agree ownership, economics, creator promotion commitments, and ongoing responsibilities.",
+  },
+  team: {
+    title: "Meet the engineers behind the builds.",
+    text:
+      "Seasoned software engineers who can take a product from a sharp idea to secure, scalable production.",
+    members: [
+      {
+        name: "Varad Thokal",
+        initials: "VT",
+        role: "AI & backend systems",
+        bio: "Distributed-systems and AI engineer with experience at Deutsche Bank.",
+        linkedin: "https://www.linkedin.com/in/varad-thokal",
+      },
+      {
+        name: "Animesh Landge",
+        initials: "AL",
+        role: "Platform & product engineering",
+        bio: "Software engineer at Booking.com with experience across scalable backend and product systems.",
+        linkedin: "https://www.linkedin.com/in/animesh-landge",
+      },
+    ],
   },
   faq: [
     {

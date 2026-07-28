@@ -251,6 +251,33 @@ function Deal() {
   );
 }
 
+function Team() {
+  return (
+    <section className="team-section shell" id="team" aria-labelledby="team-title">
+      <div className="team-intro">
+        <h2 id="team-title">{content.team.title}</h2>
+        <p>{content.team.text}</p>
+      </div>
+      <div className="team-list">
+        {content.team.members.map((member) => (
+          <article className="team-member" key={member.name}>
+            <span className="member-initials" aria-hidden="true">{member.initials}</span>
+            <div>
+              <p>{member.role}</p>
+              <h3>{member.name}</h3>
+              <span>{member.bio}</span>
+            </div>
+            <a href={member.linkedin} target="_blank" rel="noreferrer" aria-label={`${member.name} on LinkedIn`}>
+              LinkedIn
+              <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function Faq() {
   return (
     <section className="faq-section shell" aria-labelledby="faq-title">
@@ -389,6 +416,7 @@ export default function App() {
         <Process />
         <Fit />
         <Deal />
+        <Team />
         <Faq />
         <FinalCta onApply={() => setShowForm(true)} />
       </main>
