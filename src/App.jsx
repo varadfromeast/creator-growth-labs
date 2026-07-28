@@ -1,234 +1,170 @@
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
-  CheckCircle2,
-  ScanLine,
-  ShieldCheck,
+  Check,
+  ChevronDown,
+  CircleDot,
+  Code2,
+  Lightbulb,
   Sparkles,
-  TrendingUp,
-  Zap,
+  Users,
   X,
 } from "lucide-react";
-import { motion, useReducedMotion, useScroll, useTransform, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { content } from "./content";
 
 const ease = [0.16, 1, 0.3, 1];
 
-function ExternalCta({ className = "", children = content.hero.cta, microCopy, onClick }) {
+function Button({ children, className = "", onClick, type = "button" }) {
   return (
-    <div className="cta-wrapper">
-      <a
-        className={`cta-link ${className}`}
-        href={content.instagramUrl}
-        target="_blank"
-        rel="noreferrer"
-        onClick={onClick}
-      >
-        <span>{children}</span>
-        <ArrowUpRight aria-hidden="true" size={18} strokeWidth={2.4} />
-      </a>
-      {microCopy && <p className="cta-micro-copy">{microCopy}</p>}
-    </div>
+    <button className={`button ${className}`} type={type} onClick={onClick}>
+      <span>{children}</span>
+      <ArrowUpRight aria-hidden="true" size={18} strokeWidth={2.4} />
+    </button>
   );
 }
 
-function Header({ onTalk }) {
+function Header({ onApply }) {
   return (
     <header className="site-header">
-      <a className="skip-link" href="#main">
-        Skip to content
-      </a>
+      <a className="skip-link" href="#main">Skip to content</a>
       <div className="shell nav">
         <a className="brand" href="#main" aria-label="Creator Growth Lab home">
-          <span className="brand-mark" aria-hidden="true">
-            <Sparkles size={18} strokeWidth={2.5} />
-          </span>
+          <span className="brand-mark" aria-hidden="true">C</span>
           <span>Creator Growth Lab</span>
         </a>
-
         <nav className="nav-links" aria-label="Primary navigation">
           {content.nav.map((item) => (
-            <a key={item.href} href={item.href}>
-              {item.label}
-            </a>
+            <a href={item.href} key={item.href}>{item.label}</a>
           ))}
         </nav>
-
-        <ExternalCta className="nav-cta" onClick={onTalk} />
+        <Button className="nav-button" onClick={onApply}>Apply</Button>
       </div>
     </header>
   );
 }
 
-function Hero({ onTalk }) {
-  const shouldReduceMotion = useReducedMotion();
-  const heroWords = content.hero.title.split(" ");
+function VentureBlueprint() {
+  return (
+    <motion.div
+      className="venture-blueprint"
+      initial={{ opacity: 0, y: 24, rotate: 1.2 }}
+      animate={{ opacity: 1, y: 0, rotate: 0 }}
+      transition={{ duration: 0.8, delay: 0.18, ease }}
+      aria-label="Creator and studio inputs combine into a recurring software venture"
+    >
+      <div className="blueprint-top">
+        <span>Venture blueprint</span>
+        <span className="status"><CircleDot size={14} aria-hidden="true" /> Selective</span>
+      </div>
+      <div className="blueprint-inputs">
+        <div className="blueprint-input creator-input">
+          <Users size={21} aria-hidden="true" />
+          <span>Creator</span>
+          <strong>Trust<br />Distribution<br />Expertise</strong>
+        </div>
+        <span className="plus" aria-hidden="true">+</span>
+        <div className="blueprint-input studio-input">
+          <Code2 size={21} aria-hidden="true" />
+          <span>Studio</span>
+          <strong>Validate<br />Build<br />Operate</strong>
+        </div>
+      </div>
+      <div className="blueprint-output">
+        <Sparkles size={20} aria-hidden="true" />
+        <div>
+          <span>Shared venture</span>
+          <strong>Useful software people keep paying for.</strong>
+        </div>
+        <ArrowRight size={20} aria-hidden="true" />
+      </div>
+      <div className="blueprint-terms">
+        <span>Shared ownership</span>
+        <span>Recurring revenue</span>
+        <span>Clear launch terms</span>
+      </div>
+    </motion.div>
+  );
+}
 
+function Hero({ onApply }) {
+  const reduceMotion = useReducedMotion();
   return (
     <section className="hero" aria-labelledby="hero-title">
       <div className="shell hero-grid">
-        <div className="hero-copy">
-          <motion.p
-            className="eyebrow"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease }}
-          >
-            <span className="live-dot" aria-hidden="true" />
-            {content.hero.eyebrow}
-          </motion.p>
-
-          <motion.p
-            className="scarcity-badge"
-            initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.1, ease }}
-          >
-            {content.hero.scarcityBadge}
-          </motion.p>
-
-          <h1 id="hero-title">
-            {heroWords.map((word, index) => (
-              <motion.span
-                key={`${word}-${index}`}
-                initial={shouldReduceMotion ? false : { opacity: 1, y: 12 }}
-                animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-                transition={{ duration: 0.46, delay: index * 0.024, ease }}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </h1>
-
-          <motion.p
-            className="lead"
-            initial={shouldReduceMotion ? false : { opacity: 0.82, y: 12 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.34, ease }}
-          >
-            {content.hero.lead}
-          </motion.p>
-
-          <motion.div
-            className="hero-actions"
-            initial={shouldReduceMotion ? false : { opacity: 0.82, y: 10 }}
-            animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45, ease }}
-          >
-            <ExternalCta microCopy={content.hero.ctaMicroCopy} onClick={onTalk} />
-            <a className="ghost-link" href="#systems">
-              <span>{content.hero.secondaryCta}</span>
-              <ArrowRight aria-hidden="true" size={18} strokeWidth={2.4} />
+        <motion.div
+          className="hero-copy"
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.72, ease }}
+        >
+          <p className="signal">{content.hero.signal}</p>
+          <h1 id="hero-title">{content.hero.title}</h1>
+          <p className="hero-lead">{content.hero.lead}</p>
+          <div className="hero-actions">
+            <Button onClick={onApply}>{content.hero.cta}</Button>
+            <a className="text-link" href="#model">
+              {content.hero.secondaryCta}
+              <ArrowRight aria-hidden="true" size={18} />
             </a>
-          </motion.div>
-
-          <div className="proof-strip" aria-label="Service outcomes">
-            {content.proof.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
           </div>
-        </div>
+          <p className="hero-note"><Check size={16} aria-hidden="true" />{content.hero.note}</p>
+        </motion.div>
+        <VentureBlueprint />
       </div>
     </section>
   );
 }
 
-function Marquee() {
-  const items = [
-    "Not vague interest. People ready to pay.",
-    "Not ad homework. Handled tests.",
-    "Not random reach. Paid demand.",
+function Model() {
+  const columns = [
+    { ...content.model.creator, className: "creator-side" },
+    { ...content.model.studio, className: "studio-side" },
   ];
-
   return (
-    <div className="marquee" aria-hidden="true">
-      <div className="marquee-track">
-        {[...items, ...items, ...items].map((item, index) => (
-          <span key={`${item}-${index}`}>{item}</span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ChapterMarker({ children }) {
-  return (
-    <div className="chapter-marker shell">
-      <motion.span
-        initial={{ opacity: 0, scaleX: 0.72 }}
-        whileInView={{ opacity: 1, scaleX: 1 }}
-        viewport={{ once: true, amount: 0.7 }}
-        transition={{ duration: 0.62, ease }}
-      >
-        {children}
-      </motion.span>
-    </div>
-  );
-}
-
-function ScrollStory({ chapter, index }) {
-  const ref = useRef(null);
-  const shouldReduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const copyY = useTransform(scrollYProgress, [0, 0.5, 1], [24, 0, -18]);
-  const copyOpacity = useTransform(scrollYProgress, [0, 0.18, 0.82, 1], [0.62, 1, 1, 0.78]);
-  const boardY = useTransform(scrollYProgress, [0, 0.5, 1], [48, 0, -56]);
-  const boardRotate = useTransform(scrollYProgress, [0, 0.5, 1], [1.8, 0, -1.4]);
-  const boardOpacity = useTransform(scrollYProgress, [0, 0.2, 0.88, 1], [0.52, 1, 1, 0.72]);
-
-  return (
-    <section ref={ref} className={`scroll-story shell story-${index + 1}`} aria-labelledby={`story-${index + 1}-title`}>
-      <motion.div
-        className="story-copy"
-        style={shouldReduceMotion ? undefined : { y: copyY, opacity: copyOpacity }}
-      >
-        <p className="kicker">{chapter.label}</p>
-        <h2 id={`story-${index + 1}-title`}>{chapter.title}</h2>
-        <p>{chapter.text}</p>
-      </motion.div>
-
-      <motion.div
-        className="story-proof"
-        style={shouldReduceMotion ? undefined : { y: boardY, rotate: boardRotate, opacity: boardOpacity }}
-        aria-label={`${chapter.title} proof points`}
-      >
-        <div className="story-proof-label">
-          <Sparkles aria-hidden="true" size={18} />
-          <span>Creator Growth Lab</span>
+    <section className="model-section" id="model" aria-labelledby="model-title">
+      <div className="shell">
+        <div className="section-intro">
+          <h2 id="model-title">{content.model.title}</h2>
+          <p>{content.model.intro}</p>
         </div>
-        <div className="story-chips">
-          {chapter.chips.map((chip) => (
-            <span key={chip}>{chip}</span>
+        <div className="model-split">
+          {columns.map((column) => (
+            <div className={`model-column ${column.className}`} key={column.label}>
+              <p>{column.label}</p>
+              <h3>{column.title}</h3>
+              <ul>
+                {column.points.map((point) => (
+                  <li key={point}><Check size={18} aria-hidden="true" />{point}</li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
-      </motion.div>
+        <p className="together-line">{content.model.together}</p>
+      </div>
     </section>
   );
 }
 
-function Offer() {
+function Why() {
   return (
-    <section className="offer-section shell" id="offer" aria-labelledby="offer-title">
-      <ScrollReveal className="offer-panel">
-        <p className="kicker">{content.offer.kicker}</p>
-        <h2 id="offer-title">{content.offer.title}</h2>
-        <p>{content.offer.text}</p>
-      </ScrollReveal>
-
-      <div className="offer-list">
-        {content.offer.points.map((point, index) => (
-          <ScrollReveal key={point.title} className="offer-point" delay={index * 0.08}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <div>
-              <h3>{point.title}</h3>
-              <p>{point.text}</p>
+    <section className="why-section">
+      <div className="shell why-grid">
+        <div>
+          <Lightbulb aria-hidden="true" size={30} />
+          <h2>{content.why.title}</h2>
+          <p>{content.why.text}</p>
+        </div>
+        <div className="outcome-list" aria-label="What a software business still needs">
+          {content.why.outcomes.map((outcome, index) => (
+            <div key={outcome}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{outcome}</strong>
             </div>
-          </ScrollReveal>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -237,97 +173,69 @@ function Offer() {
 function Process() {
   return (
     <section className="process-section shell" id="process" aria-labelledby="process-title">
-      <ScrollReveal className="section-head">
-        <p className="kicker">{content.process.kicker}</p>
-        <h2 id="process-title">{content.process.title}</h2>
-      </ScrollReveal>
-
-      <div className="process-board">
+      <h2 id="process-title">{content.process.title}</h2>
+      <ol className="process-list">
         {content.process.steps.map((step, index) => (
-          <ScrollReveal key={step} className="process-step" delay={index * 0.08}>
+          <li key={step.title}>
             <span>{index + 1}</span>
-            <p>{step}</p>
-          </ScrollReveal>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Systems() {
-  const icons = [ScanLine, Zap, ShieldCheck, TrendingUp];
-
-  return (
-    <section className="systems-section shell" id="systems" aria-labelledby="systems-title">
-      <ScrollReveal className="systems-copy">
-        <p className="kicker">{content.systems.kicker}</p>
-        <h2 id="systems-title">{content.systems.title}</h2>
-        <p>{content.systems.text}</p>
-      </ScrollReveal>
-
-      <ScrollReveal className="systems-console" delay={0.08}>
-        {content.systems.rows.map(([action, label], index) => {
-          const Icon = icons[index];
-          return (
-            <div className="console-row" key={action}>
-              <span className="console-icon">
-                <Icon aria-hidden="true" size={19} />
-              </span>
-              <strong>{label}</strong>
-              <em>{action}</em>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
             </div>
-          );
-        })}
-      </ScrollReveal>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }
 
 function Fit() {
   return (
-    <section className="fit-section shell" id="fit" aria-labelledby="fit-title">
-      <ScrollReveal className="section-head">
-        <p className="kicker">{content.fit.kicker}</p>
-        <h2 id="fit-title">{content.fit.title}</h2>
-        <p>{content.fit.text}</p>
-      </ScrollReveal>
-
-      <div className="fit-columns">
-        <FitColumn title="Best fit" tone="yes" items={content.fit.best} />
-        <FitColumn title="Not a fit" tone="no" items={content.fit.not} />
+    <section className="fit-section" id="fit" aria-labelledby="fit-title">
+      <div className="shell fit-grid">
+        <div className="fit-copy">
+          <h2 id="fit-title">{content.fit.title}</h2>
+          <p>{content.fit.text}</p>
+        </div>
+        <div className="fit-lists">
+          <div>
+            <h3>Strong fit</h3>
+            <ul>
+              {content.fit.yes.map((item) => <li key={item}><Check size={18} aria-hidden="true" />{item}</li>)}
+            </ul>
+          </div>
+          <div className="not-fit">
+            <h3>Not this model</h3>
+            <ul>
+              {content.fit.no.map((item) => <li key={item}><X size={17} aria-hidden="true" />{item}</li>)}
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
-function FitColumn({ title, tone, items }) {
+function Deal() {
   return (
-    <ScrollReveal className={`fit-column ${tone}`}>
-      <h3>{title}</h3>
-      <ul>
-        {items.map((item) => (
-          <li key={item}>
-            <CheckCircle2 aria-hidden="true" size={18} />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </ScrollReveal>
+    <section className="deal-section shell">
+      <div>
+        <span>Partnership, not outsourcing</span>
+        <h2>{content.deal.title}</h2>
+      </div>
+      <p>{content.deal.text}</p>
+    </section>
   );
 }
 
 function Faq() {
   return (
     <section className="faq-section shell" aria-labelledby="faq-title">
-      <ScrollReveal className="section-head compact">
-        <p className="kicker">Good questions</p>
-        <h2 id="faq-title">Simple answers before we talk.</h2>
-      </ScrollReveal>
-
+      <h2 id="faq-title">Before you apply.</h2>
       <div className="faq-list">
         {content.faq.map((item) => (
           <details key={item.q}>
-            <summary>{item.q}</summary>
+            <summary>{item.q}<ChevronDown size={19} aria-hidden="true" /></summary>
             <p>{item.a}</p>
           </details>
         ))}
@@ -336,249 +244,139 @@ function Faq() {
   );
 }
 
-function LeadForm({ onClose }) {
-  const [formData, setFormData] = useState({ name: "", email: "", instagram: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+function FinalCta({ onApply }) {
+  return (
+    <section className="final-cta">
+      <div className="shell final-cta-inner">
+        <div>
+          <h2>{content.finalCta.title}</h2>
+          <p>{content.finalCta.text}</p>
+        </div>
+        <div>
+          <Button onClick={onApply}>{content.finalCta.cta}</Button>
+          <small>{content.finalCta.note}</small>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrorMessage("");
+function ApplicationForm({ onClose }) {
+  const [formData, setFormData] = useState({
+    name: "", email: "", instagram: "", niche: "", problem: "",
+  });
+  const [state, setState] = useState("idle");
+  const reduceMotion = useReducedMotion();
 
-    if (!content.formspreeEndpoint) {
-      setErrorMessage(content.leadForm.missingEndpoint);
-      return;
-    }
+  useEffect(() => {
+    const onKeyDown = (event) => event.key === "Escape" && onClose();
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onClose]);
 
-    setIsSubmitting(true);
+  const update = (event) => {
+    setFormData((current) => ({ ...current, [event.target.name]: event.target.value }));
+  };
 
+  const submit = async (event) => {
+    event.preventDefault();
+    setState("submitting");
     try {
       const response = await fetch(content.formspreeEndpoint, {
         method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          instagram: formData.instagram,
-          source: "Creator Growth Lab landing page",
-        }),
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, source: "Creator venture studio landing page" }),
       });
-
-      if (!response.ok) {
-        throw new Error("Formspree submission failed");
-      }
-
-      setSubmitted(true);
-      setTimeout(() => {
-        onClose();
-      }, 2000);
+      if (!response.ok) throw new Error("Submission failed");
+      setState("success");
     } catch {
-      setErrorMessage(content.leadForm.error);
-    } finally {
-      setIsSubmitting(false);
+      setState("error");
     }
   };
 
   return (
     <motion.div
-      className="lead-form-overlay"
-      initial={{ opacity: 0 }}
+      className="form-overlay"
+      role="presentation"
+      onMouseDown={(event) => event.target === event.currentTarget && onClose()}
+      initial={reduceMotion ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      onClick={onClose}
     >
       <motion.div
-        className="lead-form-panel"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 20, opacity: 0 }}
-        onClick={(e) => e.stopPropagation()}
+        className="form-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="form-title"
+        initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.3, ease }}
       >
-        <button className="form-close" onClick={onClose} aria-label="Close form">
-          <X size={24} />
+        <button className="form-close" onClick={onClose} aria-label="Close application form">
+          <X size={22} />
         </button>
-
-        {!submitted ? (
-          <>
-            <h3>{content.leadForm.title}</h3>
-            <p>{content.leadForm.text}</p>
-
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="name"
-                placeholder={content.leadForm.fields.name}
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                disabled={isSubmitting}
-                required
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder={content.leadForm.fields.email}
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                disabled={isSubmitting}
-                required
-              />
-              <input
-                type="text"
-                name="instagram"
-                placeholder={content.leadForm.fields.instagram}
-                value={formData.instagram}
-                onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
-                disabled={isSubmitting}
-                required
-              />
-              {errorMessage && (
-                <p className="form-error" role="alert">
-                  {errorMessage}
-                </p>
-              )}
-              <button type="submit" className="form-submit" disabled={isSubmitting}>
-                {isSubmitting ? content.leadForm.submitting : content.leadForm.submit}
-              </button>
-            </form>
-
-            <a href={content.instagramUrl} target="_blank" rel="noreferrer" className="form-skip">
-              {content.leadForm.skip}
-            </a>
-          </>
-        ) : (
+        {state === "success" ? (
           <div className="form-success">
-            <CheckCircle2 size={48} />
-            <h3>Request received!</h3>
-            <p>We'll analyze your content and reach out within 24 hours.</p>
+            <span><Check size={28} /></span>
+            <h2>{content.leadForm.successTitle}</h2>
+            <p>{content.leadForm.successText}</p>
+            <button className="text-link" onClick={onClose}>Close</button>
           </div>
+        ) : (
+          <>
+            <h2 id="form-title">{content.leadForm.title}</h2>
+            <p className="form-intro">{content.leadForm.text}</p>
+            <form onSubmit={submit}>
+              <div className="field-row">
+                <label>Name<input name="name" required placeholder={content.leadForm.fields.name} value={formData.name} onChange={update} /></label>
+                <label>Email<input name="email" type="email" required placeholder={content.leadForm.fields.email} value={formData.email} onChange={update} /></label>
+              </div>
+              <div className="field-row">
+                <label>Channel<input name="instagram" required placeholder={content.leadForm.fields.instagram} value={formData.instagram} onChange={update} /></label>
+                <label>Niche<input name="niche" required placeholder={content.leadForm.fields.niche} value={formData.niche} onChange={update} /></label>
+              </div>
+              <label>Recurring audience problem<textarea name="problem" required rows="4" placeholder={content.leadForm.fields.problem} value={formData.problem} onChange={update} /></label>
+              {state === "error" && <p className="form-error" role="alert">{content.leadForm.error}</p>}
+              <Button className="form-submit" type="submit">
+                {state === "submitting" ? content.leadForm.submitting : content.leadForm.submit}
+              </Button>
+            </form>
+          </>
         )}
       </motion.div>
     </motion.div>
   );
 }
 
-function FinalCta({ onTalk }) {
-  return (
-    <section className="final-cta shell" id="talk" aria-labelledby="cta-title">
-      <ScrollReveal className="cta-panel">
-        <div>
-          <p className="kicker">{content.cta.kicker}</p>
-          <h2 id="cta-title">{content.cta.title}</h2>
-          <p>{content.cta.text}</p>
-        </div>
-        <ExternalCta microCopy={content.cta.ctaMicroCopy} onClick={onTalk} />
-      </ScrollReveal>
-    </section>
-  );
-}
-
-function ScrollReveal({ children, className = "", delay = 0 }) {
-  const shouldReduceMotion = useReducedMotion();
-
-  return (
-    <motion.div
-      className={className}
-      initial={false}
-      whileInView={shouldReduceMotion ? undefined : { y: [0, -2, 0] }}
-      viewport={{ once: true, amount: 0.22 }}
-      transition={{ duration: 0.5, delay, ease }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function ScrollProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
-  return <motion.div className="scroll-progress" style={{ scaleX }} aria-hidden="true" />;
-}
-
-function StickyMobileCta({ onTalk }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const { scrollY } = useScroll();
-
-  useEffect(() => {
-    return scrollY.on("change", (latest) => {
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollThreshold = windowHeight * 0.5;
-      const footerThreshold = documentHeight - windowHeight - 400;
-
-      setIsVisible(latest > scrollThreshold && latest < footerThreshold && window.innerWidth <= 879);
-    });
-  }, [scrollY]);
-
-  return (
-    <>
-      <AnimatePresence>
-        {isVisible && (
-          <motion.div
-            className="sticky-mobile-cta"
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ duration: 0.3, ease }}
-          >
-            <button
-              className="cta-link"
-              onClick={onTalk}
-            >
-              <span>Get free content audit</span>
-              <ArrowUpRight aria-hidden="true" size={18} strokeWidth={2.4} />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-    </>
-  );
-}
-
-function App() {
+export default function App() {
   const [showForm, setShowForm] = useState(false);
-
-  const openForm = (event) => {
-    event?.preventDefault();
-    setShowForm(true);
-  };
-
   return (
     <>
-      <ScrollProgress />
-      <StickyMobileCta onTalk={openForm} />
-      <Header onTalk={openForm} />
+      <Header onApply={() => setShowForm(true)} />
       <main id="main">
-        <Hero onTalk={openForm} />
-        <Marquee />
-        <ChapterMarker>{content.chapters[0].label}</ChapterMarker>
-        <ScrollStory chapter={content.chapters[0]} index={0} />
-        <Offer />
-        <ChapterMarker>{content.chapters[1].label}</ChapterMarker>
-        <ScrollStory chapter={content.chapters[1]} index={1} />
+        <Hero onApply={() => setShowForm(true)} />
+        <Model />
+        <Why />
         <Process />
-        <ChapterMarker>{content.chapters[2].label}</ChapterMarker>
-        <ScrollStory chapter={content.chapters[2]} index={2} />
-        <Systems />
         <Fit />
+        <Deal />
         <Faq />
-        <FinalCta onTalk={openForm} />
+        <FinalCta onApply={() => setShowForm(true)} />
       </main>
-      <AnimatePresence>
-        {showForm && <LeadForm onClose={() => setShowForm(false)} />}
-      </AnimatePresence>
       <footer className="site-footer">
-        <div className="shell footer-inner">
-          <span>Instagram: @varad.th</span>
+        <div className="shell">
+          <span>Creator Growth Lab</span>
+          <a href={content.instagramUrl} target="_blank" rel="noreferrer">@varad.th</a>
         </div>
       </footer>
+      <AnimatePresence>
+        {showForm && <ApplicationForm onClose={() => setShowForm(false)} />}
+      </AnimatePresence>
     </>
   );
 }
-
-export default App;
