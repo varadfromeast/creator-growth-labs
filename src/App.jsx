@@ -110,6 +110,14 @@ function Hero({ onApply }) {
             </a>
           </div>
           <p className="hero-note"><Check size={16} aria-hidden="true" />{content.hero.note}</p>
+          <div className="hero-team">
+            <span>{content.team.label}</span>
+            {content.team.members.map((member) => (
+              <a href={member.linkedin} target="_blank" rel="noreferrer" key={member.name}>
+                {member.name}<ArrowUpRight size={12} aria-hidden="true" />
+              </a>
+            ))}
+          </div>
         </motion.div>
         <VentureBlueprint />
       </div>
@@ -135,6 +143,7 @@ function Proof() {
             </a>
           ))}
         </div>
+        <p className="proof-note">{content.proof.note}</p>
       </div>
     </section>
   );
@@ -247,33 +256,6 @@ function Deal() {
         <h2>{content.deal.title}</h2>
       </div>
       <p>{content.deal.text}</p>
-    </section>
-  );
-}
-
-function Team() {
-  return (
-    <section className="team-section shell" id="team" aria-labelledby="team-title">
-      <div className="team-intro">
-        <h2 id="team-title">{content.team.title}</h2>
-        <p>{content.team.text}</p>
-      </div>
-      <div className="team-list">
-        {content.team.members.map((member) => (
-          <article className="team-member" key={member.name}>
-            <span className="member-initials" aria-hidden="true">{member.initials}</span>
-            <div>
-              <p>{member.role}</p>
-              <h3>{member.name}</h3>
-              <span>{member.bio}</span>
-            </div>
-            <a href={member.linkedin} target="_blank" rel="noreferrer" aria-label={`${member.name} on LinkedIn`}>
-              LinkedIn
-              <ArrowUpRight size={15} aria-hidden="true" />
-            </a>
-          </article>
-        ))}
-      </div>
     </section>
   );
 }
@@ -416,7 +398,6 @@ export default function App() {
         <Process />
         <Fit />
         <Deal />
-        <Team />
         <Faq />
         <FinalCta onApply={() => setShowForm(true)} />
       </main>

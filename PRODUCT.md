@@ -29,7 +29,7 @@ Avoid generic SaaS layouts, venture-capital theater, vague “turn followers int
 3. Qualify for authority and recurring audience pain, not raw follower count.
 4. Make validation precede development.
 5. Keep ownership language honest: shared upside, with exact terms agreed per venture.
-6. Establish technical credibility with the engineers' real experience and LinkedIn profiles.
+6. Keep team credibility subtle: small LinkedIn links near the primary pitch, not a prominent résumé section.
 
 ## Accessibility & Inclusion
 
